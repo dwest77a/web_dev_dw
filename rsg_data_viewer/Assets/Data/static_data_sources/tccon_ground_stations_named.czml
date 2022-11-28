@@ -1,0 +1,789 @@
+[{ 
+ 	 "id" : "document", 
+ 	 "name" : "test name", 
+ 	 "version" : "1.0" 
+ },
+ 
+ 	 {     
+ 	 "id" : "1",    
+ 	 "name" : "Anmyeondo, Korea",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Anmyeondo, Korea",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [126.3311, 36.5382, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "2",    
+ 	 "name" : "Arrival Heights, Antarctica",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_red.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Arrival Heights, Antarctica",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [166.663, -77.83, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "3",    
+ 	 "name" : "Ascension Island",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_red.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Ascension Island",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [-14.3325, -7.9165, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "4",    
+ 	 "name" : "Bialystok, Poland",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Bialystok, Poland",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [23.025, 53.23, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "5",    
+ 	 "name" : "Bremen, Germany",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Bremen, Germany",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [8.85, 53.1, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "6",    
+ 	 "name" : "Caltech, USA",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Caltech, USA",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [-118.127, 34.136, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "7",    
+ 	 "name" : "Darwin, Australia",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Darwin, Australia",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [130.92658, -12.45606, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "8",    
+ 	 "name" : "Dryden, USA",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_red.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Dryden, USA",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [-117.882, 34.958, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "9",    
+ 	 "name" : "Eureka, Canada",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Eureka, Canada",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [-86.42, 80.05, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "10",    
+ 	 "name" : "Four Corners, USA",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Four Corners, USA",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [-108.48009, 36.79749, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "11",    
+ 	 "name" : "Garmisch, Germany",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Garmisch, Germany",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [11.063, 47.476, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "12",    
+ 	 "name" : "Izana, Tenerife",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Izana, Tenerife",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [-16.5, 28.3, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "13",    
+ 	 "name" : "Karlsruhe, Germany",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_red.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Karlsruhe, Germany",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [8.439, 49.1, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "14",    
+ 	 "name" : "Lamont, OK (USA)",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Lamont, OK (USA)",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [-97.486, 36.604, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "15",    
+ 	 "name" : "Lauder, New Zealand",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Lauder, New Zealand",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [169.684, -45.038, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "16",    
+ 	 "name" : "Ny Alesund, Spitsbergen",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Ny Alesund, Spitsbergen",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [11.9, 78.9, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "17",    
+ 	 "name" : "Orleans, France",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_red.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Orleans, France",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [2.113, 47.97, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "18",    
+ 	 "name" : "Paris, France",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Paris, France",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [2.356, 48.486, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "19",    
+ 	 "name" : "Park Falls, WI (USA)",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Park Falls, WI (USA)",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [-90.273, 45.945, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "20",    
+ 	 "name" : "Reunion Island",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Reunion Island",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [55.485, -20.901, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "21",    
+ 	 "name" : "Rikubetsu, Japan",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Rikubetsu, Japan",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [143.7661, 43.4567, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "22",    
+ 	 "name" : "Saga, Japan",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Saga, Japan",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [130.288239, 33.240962, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "23",    
+ 	 "name" : "Sodankyla, Finland",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Sodankyla, Finland",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [26.631, 67.3668, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "24",    
+ 	 "name" : "Tsukuba, Japan",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Tsukuba, Japan",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [140.1215, 36.0513, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "25",    
+ 	 "name" : "Wollongong, Australia",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Wollongong, Australia",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [150.879, -34.406, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "26",    
+ 	 "name" : "Yekaterinburg, Russia",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_red.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Yekaterinburg, Russia",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [59.545, 57.038, 0]    
+ 	 }    
+ 	 },
+ 
+ 	 {     
+ 	 "id" : "27",    
+ 	 "name" : "Zugspitze, Germany",     
+ 	 "description" : "TCCON Site",    
+ 	 "billboard" : {     
+ 	 	 "image" : "../../Images/Pins/pin_green.png",    
+ 	 	 "scale" : "0.5"     
+ 	 },     
+ 	 "label" : {     
+ 	 	 "fillColor" : {     
+ 	 	 	 "rgba" : [255, 255, 255, 255]     
+ 	 	 },     
+ 	 	 "font" : "12pt Lucida Console",     
+ 	 	 "horizontalOrigin" : "LEFT",     
+ 	 	 "pixelOffset" : {     
+ 	 	 	 "cartesian2" : [15, 0]     
+ 	 	 },     
+ 	 	 "style" : "FILL",     
+ 	 	 "text" : "Zugspitze, Germany",     
+ 	 	 "showBackground" : true,    
+ 	 	 "backgroundColor" : {    
+ 	 	 	 "rgba" : [112, 89, 57, 200]    
+ 	 	 }     
+ 	 },    
+ 	 "position" : {    
+ 	 	 "cartographicDegrees" : [10.98, 47.42, 0]    
+ 	 }    
+ 	 }
+ ]

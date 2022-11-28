@@ -1,0 +1,28 @@
+Name	Description	Image	Label Text	Longitude	Latitude	Height
+Anmyeondo, Korea	TCCON Site	../Pins/pin_green.png	Anmyeondo, Korea	126.3311	36.5382	0
+Arrival Heights, Antarctica	TCCON Site	../Pins/pin_red.png	Arrival Heights, Antarctica	166.663	-77.83	0
+Ascension Island	TCCON Site	../Pins/pin_red.png	Ascension Island	-14.3325	-7.9165	0
+Bialystok, Poland	TCCON Site	../Pins/pin_green.png	Bialystok, Poland	23.025	53.23	0
+Bremen, Germany	TCCON Site	../Pins/pin_green.png	Bremen, Germany	8.85	53.1	0
+Caltech, USA	TCCON Site	../Pins/pin_green.png	Caltech, USA	-118.127	34.136	0
+Darwin, Australia	TCCON Site	../Pins/pin_green.png	Darwin, Australia	130.92658	-12.45606	0
+Dryden, USA	TCCON Site	../Pins/pin_red.png	Dryden, USA	-117.882	34.958	0
+Eureka, Canada	TCCON Site	../Pins/pin_green.png	Eureka, Canada	-86.42	80.05	0
+Four Corners, USA	TCCON Site	../Pins/pin_green.png	Four Corners, USA	-108.48009	36.79749	0
+Garmisch, Germany	TCCON Site	../Pins/pin_green.png	Garmisch, Germany	11.063	47.476	0
+Izana, Tenerife	TCCON Site	../Pins/pin_green.png	Izana, Tenerife	-16.5	28.3	0
+Karlsruhe, Germany	TCCON Site	../Pins/pin_red.png	Karlsruhe, Germany	8.439	49.1	0
+Lamont, OK (USA)	TCCON Site	../Pins/pin_green.png	Lamont, OK (USA)	-97.486	36.604	0
+Lauder, New Zealand	TCCON Site	../Pins/pin_green.png	Lauder, New Zealand	169.684	-45.038	0
+Ny Alesund, Spitsbergen	TCCON Site	../Pins/pin_green.png	Ny Alesund, Spitsbergen	11.9	78.9	0
+Orleans, France	TCCON Site	../Pins/pin_red.png	Orleans, France	2.113	47.97	0
+Paris, France	TCCON Site	../Pins/pin_green.png	Paris, France	2.356	48.486	0
+Park Falls, WI (USA)	TCCON Site	../Pins/pin_green.png	Park Falls, WI (USA)	-90.273	45.945	0
+Reunion Island	TCCON Site	../Pins/pin_green.png	Reunion Island	55.485	-20.901	0
+Rikubetsu, Japan	TCCON Site	../Pins/pin_green.png	Rikubetsu, Japan	143.7661	43.4567	0
+Saga, Japan	TCCON Site	../Pins/pin_green.png	Saga, Japan	130.288239	33.240962	0
+Sodankyla, Finland	TCCON Site	../Pins/pin_green.png	Sodankyla, Finland	26.631	67.3668	0
+Tsukuba, Japan	TCCON Site	../Pins/pin_green.png	Tsukuba, Japan	140.1215	36.0513	0
+Wollongong, Australia	TCCON Site	../Pins/pin_green.png	Wollongong, Australia	150.879	-34.406	0
+Yekaterinburg, Russia	TCCON Site	../Pins/pin_red.png	Yekaterinburg, Russia	59.545	57.038	0
+Zugspitze, Germany	TCCON Site	../Pins/pin_green.png	Zugspitze, Germany	10.98	47.42	0

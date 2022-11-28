@@ -1,0 +1,6 @@
+Event title	Description	DateStart	DateEnd
+Volcanoes	Things about volcanoes	2021/01/01	2021/02/01
+Dust	Interstellar dust everywhere	empty	empty
+Lava	Hot liquid stuff	empty	empty
+Ashes	Something about more dust	empty	empty
+Earthquakes	Richter scale	empty	empty

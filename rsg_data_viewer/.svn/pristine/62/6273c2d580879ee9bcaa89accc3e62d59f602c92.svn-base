@@ -1,0 +1,41 @@
+# Optional configuration
+# default product line below specifies the line of the default product shown on the webtool
+# ... where the line indexes the line-2 (since counting from 0 and one header line)
+# ... of the project table which is in the first line of the config table (first under the header9)
+# ^default_prod_line^=14
+#
+# overlay_layers: these are tile images servered from elsewhere (eg. NASA)
+# remote location set in javascript, but changing to in config file.
+# (Reference_labels=country/city names, Reference_Features: country borders)
+# ^overlay_layers^=*Coastlines,Reference_Labels,Reference_Features
+# additional_layers: these are other data loctions to mark on the maps as points (local, defined in data_source.txt)
+# Can specify if date changes (rather than static), e.g. ECMWF winds kml winds
+# ^additional_layers^=%json%Volcanos,%czml%TCCON Ground Stations (named),%czml%TCCON Ground Stations,%kmz%Aeronet
+# coastlines.json,boarders.zip,population10k.txt,tccon.dat
+#
+# Core project configuration
+# Tab separated fields
+# Note the HeadA/B/C/D columns are used to label the fields defined in the ./project_tables/
+# Shared URL's will only remain valid if line no./order of items doesn't change (unlikely)
+# Field 'Time' will cause the relevant column entry string to be interpreted (eg. as hh:mm or hhmm)
+# 1st column now defines sub-group of 3rd column (historic reasons)
+ProjShort	ProjDesc	ProdShort	ProdDesc	Version	ProjDir	ProdUrl	ConfigUrl	HeadA	HeadB	HeadC	HeadD	pre_ymd_url
+# RS Quasi-NRT IMS
+IMS(QNRT) MetOp-B	empty	IMS	empty	empty	http://gws-access.jasmin.ac.uk/public/rsgnceo/nrt/qnrt_ims_iasi_metopb/quick_look_cesium/	empty	config/project_tables/qnrt_ims_metopb_config_table.txt	Variable	Options	Day/Night	Time Period	empty
+IMS(QNRT) MetOp-C	empty	IMS	empty	empty	http://gws-access.jasmin.ac.uk/public/rsgnceo/nrt/qnrt_ims_iasi_metopc/quick_look_cesium/	empty	config/project_tables/qnrt_ims_metopc_config_table.txt	Variable	Options	Day/Night	empty	empty
+IMS(QNRT) MetOp-A	empty	IMS	empty	empty	http://gws-access.jasmin.ac.uk/public/rsgnceo/nrt/qnrt_ims_iasi_metopa/quick_look_cesium/	empty	config/project_tables/qnrt_ims_metopa_config_table.txt	Variable	Options	Day/Night	empty	empty
+# DK run CH4
+IASI MetOp-B	empty	Methane	empty	empty	http://gws-access.jasmin.ac.uk/public/rsgnceo/nrt/nrt_ch4imsproc_iasi_metopb/quick_look_cesium/	empty	config/project_tables/nrt_ch4ims_metopb_config_table.txt	Variable	Options	Day/Night	Time Period	empty
+IASI MetOp-A	empty	Methane	empty	empty	http://gws-access.jasmin.ac.uk/public/rsgnceo/nrt/nrt_ch4imsproc_iasi_metopa/quick_look_cesium/	empty	config/project_tables/nrt_ch4ims_metopa_config_table.txt	Variable	Options	Day/Night	Time Period	empty
+#IASI MetOp-B	empty	Methane	empty	empty	http://gws-access.jasmin.ac.uk/public/rsg_share/nrt/nrt_ch4imsproc_iasi_metopb/quick_look_cesium/	empty	config/project_tables/iasi_metop_b_config_table.txt	Day/Night	Time Period	empty	empty	empty
+#IASI MetOp-A	empty	Methane	empty	empty	http://gws-access.jasmin.ac.uk/public/rsg_share/nrt/nrt_ch4imsproc_iasi_metopa/quick_look_cesium/	empty	config/project_tables/iasi_metop_a_config_table.txt	Day/Night	Time Period	empty	empty	empty
+# BL run O3
+GOME-2 MetOp-A	empty	Ozone	empty	empty	http://gws-access.jasmin.ac.uk/public/rsgnceo/nrt/nrt_o3prof_gome2_metopa/quick_look_cesium/	empty	config/project_tables/gome2_metopa_config_table.txt	Variable	Height	N_Day	Filters	empty
+GOME-2 MetOp-B	empty	Ozone	empty	empty	http://gws-access.jasmin.ac.uk/public/rsgnceo/nrt/nrt_o3prof_gome2_metopb/quick_look_cesium/	empty	config/project_tables/gome2_metopb_config_table.txt	Variable	Height	N_Day	Filters	empty
+# GT run ORAC particulates
+SEVIRI 0deg	empty	Geostationary-Regional	empty	empty	http://gws-access.jasmin.ac.uk/public/rsg_share/nrt/nrt_part_seviri_msg3/quick_look_cesium/	empty	config/project_tables/nrt_part_seviri_msg3_config.txt	Time	Variable	empty	empty	NCEO-L2-CLOUD-AEROSOL-SEVIRI_ORAC_MSG4_
+#
+# General images for over/underlaying (eg. background image)
+AVHRR (MetOp-B)	empty	Images	empty	empty	http://gws-access.jasmin.ac.uk/public/rsgnceo/projects/avhrr3/avhrr3_metopb_imagery/quick_look_cesium/	empty	config/project_tables/nrt_imagery_avhrr3_metopb_config_table.txt	Variable	Options	Time Period	empty	empty
+ECMWF	empty	Images	empty	empty	http://gws-access.jasmin.ac.uk/public/rsgnceo/projects/ecmwf_plots/wind_ql/quick_look_cesium/	empty	config/project_tables/nrt_imagery_ecmwf_plots_config_table.txt	Variable	Options	Day/Night	Time Period	empty
+S5P-TropOMI	empty	Images	empty	empty	http://gws-access.jasmin.ac.uk/public/rsgnceo/nrt/qnrt_s5p-op-no2_tropomi_s5p/quick_look_cesium/	empty	config/project_tables/nrt_imagery_s5p_config_table.txt	Variable	Options	Day/Night	Time Period	empty

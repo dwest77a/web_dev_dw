@@ -1,0 +1,16 @@
+#id - name used in project table
+#href - link to the image
+#hspace - padding,
+#alt - alternative text if cannot be loaded
+#small_screen - source of small screen image
+#height in pixels
+id	href	src	height	alt	hspace	small_screen
+esa	empty	empty	empty	empty	empty	empty
+eumetsat	empty	empty	empty	empty	empty	empty
+ecmwf	empty	empty	empty	empty	empty	empty
+nasa	empty	empty	empty	empty	empty	empty
+noaa	empty	empty	empty	empty	empty	empty
+uksa	empty	empty	empty	empty	empty	empty
+copernicus-C3S	empty	empty	empty	empty	empty	empty
+copernicus-cams	empty	empty	empty	empty	empty	empty
+copernicus	http://www.copernicus.eu	../Assets/Images/Logos/Copernicus-logo-30T.png	50	Copernicus	14	empty

@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- $Id$ -->
+	<!-- Use correct character set. -->
+	<meta charset="utf-8">
+	<!-- Tell IE to use the latest, best version. -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- Make the application on mobile take up the full browser screen and disable user scaling. -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>RSG Data Visualisation Portal</title>
+	<!--Location of the cesium.js file. Can edit the location to use different build version. Download from Cesiumjs.org-->
+<!--
+	moved Cesium.js to load at the end of the html file,
+	... so that users with slower performing devices (and especially with slower internet speeds)
+	... not be faced with a blank screen while Cesium.js is loading and rendering 
+	<script rel="preload" src="Assets/Build/Cesium/Cesium.js"></script>
+-->
+	<!--JQuery Library locations. Change to url to point to a different version. dot-luv theme is used.-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
+	<link href="source/StyleSheet.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="shortcut icon" href="Assets/Images/favicon.png" />
+	<!--JQuery Library locations. Change to url to point to a different version. dot-luv theme is used.-->
+	<link href="http://code.jquery.com/ui/1.12.1/themes/dot-luv/jquery-ui.css" rel="stylesheet">
+	<!-- include jQuery icons (that are resizable and more variety than just the default ones) -->
+	<link href="https://cdn.jsdelivr.net/npm/jquery-ui-iconfont@2.3.2/jquery-ui-1.11.icon-font.min.css" rel="stylesheet" type="text/css" />
+	
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+	<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/canvas2image@1.0.5/canvas2image.js"></script>
+<!--
+	(since this package did not work as expected, a custom parser for exif files was written in 'get_xml_tags_from_blob')
+	<script src="http://gws-access.ceda.ac.uk/public/rsgnceo/web_dev_dd/rsg_data_viewer/package/dist/exif-reader.js"></script>
+-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.js"></script>
+	<!-- lodash used to perform object deep copies (used when layers are swapped)	-->
+	<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.css">
+	
+</head>
+
+<body>
+
+	<div id="loader"></div>
+	<!--map container-->
+	<div id="cesiumContainer"></div>
+
+	<!--colour bar div on the right of the page.-->
+	<div id="colourbar" ondblclick="rsg_ui.doubleClickToggleColourbar()">
+		<div id="toggle_colourbar" onclick="rsg_ui.toggleColourbar()"> 
+			<span id="colourbar_toggle_button" class="ui-icon ui-icon-triangle-1-w toggle_on" ></span>
+		</div>
+		<table>
+			<tbody>
+				<tr>
+					<td><span id="colourbar_variable"></span></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<table>
+			<tbody id="image_and_units">
+				<tr>
+					<td id="colourbar_maxmin_labels" class="off"><p class="invisible">val:.</p><p id="colourbar_max_label">text</p> <p id="colourbar_min_label">test</p></td>
+					<td><img id="colourbar_image" onclick="rsg_colour.toggle_colour_picker()" width=60 height=300 /></td>
+					<td id="colourbar_units"><span id="colourbar_units"></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<!--logos in the bottom right of the page. Control the height and width to avoid distortion. Easiest to put them all in one image externally.-->
+	<div id="layer_data_shown">
+		<div id="layer3_info"> layer_data_shown </div>
+		<div id="layer2_info"> layer_data_shown2 </div>
+		<div id="layer1_info"> layer_data_shown </div>
+		<div id="layer0_info"> l1 info </div>
+	</div>
+	
+	<div class="topright white-text not-in-mobile-view" data-html2canvas-ignore="true">
+<!--
+		<input onclick="toggleWindVectors(this)" type="checkbox" id="vehicle1" name="vehicle1" value="Turn on Wind Vectors (temporary demo)">
+		<span>Turn on Wind Vectors<br>(temporary demo)</span>
+-->
+		<input class="jscolor off" value="ab2567">
+		<div class="ui-box">
+			<span>Zoom Level: </span>
+			<input id="zoom_slider" type="range" oninput="zoomGlobe(this.value)" min="673219" max="23033188" value="5097891" class="slider reversed" id="myRange">
+		</div>
+		
+		<div class="ui-box firefox-bug off">
+			<span>0: </span>
+			<p id="layer0_">0: </p>
+			<p id="layer0_alpha">alpha </p>
+			<br>
+			<span>1: </span>
+			<p id="layer1_">1: </p>
+			<p id="layer1_alpha">alpha </p>
+			<br>
+			<span>2: </span>
+			<p id="layer2_">2: </p>
+			<p id="layer2_alpha">alpha </p>
+			<br>
+			<span>3: </span>
+			<p id="layer3_">3: </p>
+			<p id="layer3_alpha">alpha </p>
+		</div>
+		
+	</div>
+	
+	<!--logos in the bottom right of the page. Control the height and width to avoid distortion. Easiest to put them all in one image externally.-->
+	<div id="logos">
+		<!--
+		    logos populated using JS functions 
+		-->
+	</div>
+	<!-- Smaller logos for small screen/phones-->
+	
+	<div id="logos_small">
+		<!--
+		    logos populated using JS functions 
+		-->
+	</div>
+
+<div class="flex-container"> 
+<!--logo top left for mobile display collapsed mode-->
+<!-- includes RALS SPace logo and Date navigation -->
+	<div id="ralsp_small">
+<!--		<img src="../Assets/Images/Logos/RAL_Space_RSG_white.png" onclick="rsg_ui.toggle_toolbar()" width="162px" height="53px" /> -->
+		<a href="http://www.rsg.rl.ac.uk/"><img class="bottom-margin" src="../Assets/Images/Logos/RAL_Space_RSG_white.png" width="162px" height="53px"></a>
+		
+		<div id="time-selection-ui"> <!-- START OF time selection ui -->
+		
+			<table>
+				<tbody>
+					<!-- Setup the html table for the toolbar. When any of the buttons or sliders are changed, the update function is run and the layer properties change accordingly -->
+					<tr id="datetime_picking_ui">
+						<!--datepicker input.-->
+						<td rowspan="2"><input type="text" id="datepicker-13"></td>
+						<td rowspan="2" id="timepicker_input"></td>
+						<td><button title="Advance Time of Day" class="layer_settings time_controller" onclick="rsg_timepicker.timestep_forwards()"><span class="ui-icon ui-icon-caret-1-n"></span></button></td>
+						<td rowspan="2"><button title="Reset all Layers" class="ral_button cesium-button ui-icon ui-icon-arrowrefresh-1-s squished-rectangle" onclick="reset_webpage()"></button></td>
+						<td rowspan="2"><button title="Toggle Layer Menu" class="ral_button cesium-button ui-icon ui-icon-bars squished-rectangle" onclick="rsg_ui.toggle_toolbar()"></button></td>
+					</tr>
+					<tr>
+						<td><button title="Step back Time of Day" class="layer_settings time_controller" onclick="rsg_timepicker.timestep_backwards()"><span class="ui-icon ui-icon-caret-1-s"></span></button></td>
+					</tr>
+	
+			</table>
+		
+			<table data-html2canvas-ignore="true">
+				<tbody>
+					<tr>
+						<td>
+							<div id="time_slider"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<table id="time_control_ui" data-html2canvas-ignore="true">
+				<tbody>
+					<tr>
+						<!-- Buttons controlling day and month quick navigation -->
+						<td><button title="Go to Previous Month" class="layer_settings" onclick="rsg_ui.prev_month()"><span class="ui-icon ui-icon-seek-first"></span></button></td>
+						<td><button title="Go to Previous Day" class="layer_settings" onclick="rsg_ui.prev_day()"><span class="ui-icon ui-icon-seek-prev"></span></button></td>
+						<td><button title="Advance to Next Day" class="layer_settings" onclick="rsg_ui.next_day()"><span class="ui-icon ui-icon-seek-next"></span></button></td>
+						<td><button title="Advance to Next Month" class="layer_settings" onclick="rsg_ui.next_month()"><span class="ui-icon ui-icon-seek-end"></span></button></td>
+						<td><button title="Play Animation" id="animation_button" class="layer_settings" onclick="rsg_animation.play()"><span id="animation_icon" class="ui-icon ui-icon-play"></span></button></td>
+						<td><button title="Stop Animation" id="animation_stop_button" class="layer_settings off" onclick="rsg_animation.stop_animation()"><span id="stop_icon" class="ui-icon ui-icon-stop"></span></button></td>
+						<td><button title="Rewind Animation" id="animation_rewind_button" class="layer_settings off" onclick="rsg_animation.go_back_to_paused_animation()"><span id="rewind_icon" class="ui-icon ui-icon-arrowthickstop-1-w"></span></button></td>
+						<!-- Get current current view URL to share -->
+						
+<!--
+						BUTTONS top toolbar:
+						- "Get a shareable URL"
+						- "Make a snapshot"
+						- "Make a pretty snapshot"
+						are added with javascript in the 'visualisation.js' script 'setupPage()' function
+-->
+					</tr>
+				</tbody>
+			</table>
+		
+		</div> <!-- END OF time selection ui -->
+		
+
+		<div id="animation_ui" class="ui_panel ui_off">
+			<table id="animation_menu">
+				<tbody>
+					<tr>
+						<td>Start</td>
+						<td>End</td>
+					</tr>
+					<tr>
+						<td rowspan="1"><input type="text" id="animation_start" class="animation_datepicker" ></td>
+						<td rowspan="1"><input type="text" id="animation_end" class="animation_datepicker"></td>
+					</tr>
+					<tr>
+						<td colspan="4">Click <span class="ui-icon ui-icon-play"></span> to play and hide this menu </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+
+		
+	</div> <!-- ralsp_small -->
+
+<!--Add layer list left -->
+<!-- Need to include stuff in #ralsp_small to ensure table appears below, so keep in sync with above if edit either -->
+	<div id="toolbar" style="top:180px;">
+<!--		<img src="../Assets/Images/Logos/RAL_Space_RSG_white.png" onclick="rsg_ui.hide_toolbar()" width=200 />
+		<img src="../Assets/Images/Logos/RAL_Space_RSG_white.png" onclick="rsg_ui.toggle_toolbar()" width="200px" >
+-->
+		<!--The main overlay menu on the left of the page-->
+		<table>
+			<thead>
+				<tr>
+					<div class="container">
+					  <div class="row">
+				       <div class="col-lg-12">
+								 
+									<div id="additional_layer_wrapper" class="button-group">
+										<ul id="layer_option_list1" class="dropdown-menu dropdown-menu-active">
+												<!--
+														 THE LAYER BUTTONS ARE ADDED HERE 
+														 ... dynamically, getting names from the
+														 ... .json .zip file
+												-->
+										</ul>
+								  </div> <!-- end of div class 'button group' -->
+								  
+									<div id="overlay_layer_wrapper" class="button-group">
+										<ul id="layer_option_list2" class="dropdown-menu">
+												<!--
+														 THE LAYER BUTTONS ARE ADDED HERE 
+														 ... dynamically, getting names from the
+														 ... config_table.txt 
+												-->
+										</ul>
+									</div> <!-- end of div class 'button group' -->
+								  
+								</div> <!-- end of div class 'col-lg-12' -->
+						  </div> <!-- end of div class 'row' -->
+						</div> <!-- end of div class 'container' -->
+				</tr>
+				
+				<tr>
+					<td align="right"><button class="ral_button squished-rectangle" onclick="rsg_ui.hide_toolbar()"><span class="ui-icon ui-icon-close"></span></button></td>
+					<td><h3>Layers:</h3></td>
+				</tr>
+			</thead>
+				
+				<!--	Start of dragable selection: -->
+			<tbody>
+				<table id="sortable">
+					<tbody id="layer0_cell">
+						<tr id="layer0_r1">
+							<!--The visibility checkbox.-->
+							<td><input class="w3-check has_onclick_function" id="layer0_vis" type="checkbox" onclick="rsg_layers.toggle_layer_visibility(0)" checked="checked" /></td>
+							<!--The layer name text.-->
+							<td class="l_data"><span id="layer0_data" class="has_onclick_function" onclick="rsg_ui.toggle_layer_active(0)"></span></td>
+							<!--The layer settings and add data menu buttons. Standard html buttons with a jquery ui icon on them.-->
+							<td id="layer0_buttons">
+								<button id="layer0_edit_btn"     class="layer_settings has_onclick_function" onclick="rsg_ui.toggle_add_layer(0)"><span class="ui-icon ui-icon-pencil"></span></button>
+								<button id="layer0_settings_btn" class="layer_settings has_onclick_function" onclick="rsg_ui.toggle_settings(0)"><span class="ui-icon ui-icon-gear"></span></button>
+								<button id="layer0_lock_btn"     class="layer_settings has_onclick_function" onclick="rsg_ui.toggle_layer_date_locking(0)"><span id="layer0_lock_button_icon" class="ui-icon ui-icon-unlocked"></span></button>
+							</td>
+						</tr>
+						
+						<tr id="layer0_r2">
+							<td></td>
+							<!--Sensor text. Displays smaller and in italic as defined in the CSS.-->
+							<td><span class="source_txt" id="layer0_source"></span></td>
+							<td></td>
+							<td></td>
+						</tr>
+						
+						<tr id="layer0_r3">
+							<td></td>
+							<td><span class="locked_date off" id="layer0_locked_date">placeholder</span></td>
+							<td></td>
+							<td></td>
+						</tr>
+						
+						<tr id="layer0_r4">
+							<td></td>
+							<td><span class="small-blue-text off" id="layer0_loading_status">placeholder</span></td>
+							<td></td>
+							<td></td>
+						</tr>
+						
+					</tbody>
+						
+					<tbody id="layer1_cell">
+						<!--The other layers are identical in setup but with different indices. Copy and paste two new rows to the table to add another layer.-->
+						<tr id="layer1_r1">
+							<td><input class="w3-check has_onclick_function" id="layer1_vis" type="checkbox" onclick="rsg_layers.toggle_layer_visibility(1)" checked = "false" /></td>
+							<td class="l_data"><span  id="layer1_data" class="has_onclick_function" onclick="rsg_ui.toggle_layer_active(1)"></span></td>
+							<td id="layer1_buttons">
+								<button id="layer1_edit_btn"     class="layer_settings has_onclick_function" onclick="rsg_ui.toggle_add_layer(1)"><span class="ui-icon ui-icon-pencil"></span></button>
+								<button id="layer1_settings_btn" class="layer_settings has_onclick_function" onclick="rsg_ui.toggle_settings(1)"><span class="ui-icon ui-icon-gear"></span></button>
+								<button id="layer1_lock_btn"     class="layer_settings has_onclick_function" onclick="rsg_ui.toggle_layer_date_locking(1)"><span id="layer1_lock_button_icon" class="ui-icon ui-icon-unlocked"></span></button>
+								<button id="layer1_remove_btn"   class="layer_settings has_onclick_function" onclick="rsg_layers.remove_layer(1)"><span class="ui-icon ui-icon-close"></span></button>
+							</td>
+						</tr>
+						
+						<tr id="layer1_r2">
+							<td></td>
+							<td><span class="source_txt" id="layer1_source"></span></td>
+							<td></td>
+							<td></td>
+						</tr>
+						
+						<tr id="layer1_r3">
+							<td></td>
+							<td><span class="locked_date off" id="layer1_locked_date">placeholder</span></td>
+							<td></td>
+							<td></td>
+						</tr>
+						
+						<tr id="layer1_r4">
+							<td></td>
+							<td><span class="small-blue-text off" id="layer1_loading_status">placeholder</span></td>
+							<td></td>
+							<td></td>
+						</tr>
+						
+					</tbody>
+					
+					<tbody id="layer2_cell">
+						<tr id="layer2_r1">
+							<td><input class="w3-check has_onclick_function" id="layer2_vis" type="checkbox" onclick="rsg_layers.toggle_layer_visibility(2)" checked = "false"/></td>
+							<td class="l_data"><span id="layer2_data" class="has_onclick_function" onclick="rsg_ui.toggle_layer_active(2)"></span></td>
+							<td id="layer2_buttons">
+								<button id="layer2_edit_btn"     class="layer_settings has_onclick_function" onclick="rsg_ui.toggle_add_layer(2)"><span class="ui-icon ui-icon-pencil"></span></button>
+								<button id="layer2_settings_btn" class="layer_settings has_onclick_function" onclick="rsg_ui.toggle_settings(2)"><span class="ui-icon ui-icon-gear"></span></button>
+								<button id="layer2_lock_btn"     class="layer_settings has_onclick_function" onclick="rsg_ui.toggle_layer_date_locking(2)"><span id="layer2_lock_button_icon" class="ui-icon ui-icon-unlocked"></span></button>
+								<button id="layer2_remove_btn"   class="layer_settings has_onclick_function" onclick="rsg_layers.remove_layer(2)"><span class="ui-icon ui-icon-close"></span></button>
+							</td>
+						</tr>
+						
+						<tr id="layer2_r2">
+							<td></td>
+							<td><span class="source_txt" id="layer2_source"></span></td>
+							<td></td>
+							<td></td>
+						</tr>
+						
+						<tr id="layer2_r3">
+							<td></td>
+							<td><span class="locked_date off" id="layer2_locked_date"></span></td>
+							<td></td>
+							<td></td>
+						</tr>
+						
+						<tr id="layer2_r4">
+							<td></td>
+							<td><span class="small-blue-text off" id="layer2_loading_status">placeholder</span></td>
+							<td></td>
+							<td></td>
+						</tr>
+						
+					</tbody>
+					
+					<tbody id="layer3_cell">
+						<tr id="layer3_r1">
+							<td><input class="w3-check has_onclick_function" id="layer3_vis" type="checkbox" onclick="rsg_layers.toggle_layer_visibility(3)" checked = "false"/></td>
+							<td class="l_data"><span id="layer3_data" class="has_onclick_function" onclick="rsg_ui.toggle_layer_active(3)"></span></td>
+							<td id="layer3_buttons">
+								<button id="layer3_edit_btn"     class="layer_settings has_onclick_function" onclick="rsg_ui.toggle_add_layer(3)"><span class="ui-icon ui-icon-pencil"></span></button>
+								<button id="layer3_settings_btn" class="layer_settings has_onclick_function" onclick="rsg_ui.toggle_settings(3)"><span class="ui-icon ui-icon-gear"></span></button>
+								<button id="layer3_lock_btn"     class="layer_settings has_onclick_function" onclick="rsg_ui.toggle_layer_date_locking(3)"><span id="layer3_lock_button_icon" class="ui-icon ui-icon-unlocked"></span></button>
+								<button id="layer3_remove_btn"   class="layer_settings has_onclick_function" onclick="rsg_layers.remove_layer(3)"><span class="ui-icon ui-icon-close"></span></button>
+							</td>
+						</tr>
+						
+						<tr id="layer3_r2">
+							<td></td>
+							<td><span class="source_txt" id="layer3_source"></span></td>
+							<td></td>
+							<td></td>
+						</tr>
+						
+						<tr id="layer3_r3">
+							<td></td>
+							<td><span class="locked_date off" id="layer3_locked_date"></span></td>
+							<td></td>
+							<td></td>
+						</tr>
+						
+						<tr id="layer3_r4">
+							<td></td>
+							<td><span class="small-blue-text off" id="layer3_loading_status">placeholder</span></td>
+							<td></td>
+							<td></td>
+						</tr>
+						
+					</tbody>
+					
+				</table>
+			</tbody>
+			
+			<button id="show_loading_status_button" class="transparent-button blue-ui-text" onclick="rsg_ui.toggle_loading_status()" title="Show Loading Status" data-html2canvas-ignore="true">
+				<span id="show_loading_status_button_icon" class="ui-icon ui-icon-circle-b-triangle-s"></span>
+				<span id="show_loading_status_button_label"> show loading status </span>
+			</button>
+			<div id="status-monitoring" class="ui-box off"> <!-- off by default -->
+				<span id="download-test">Downloading nr. of images: </span>
+				<br>
+				<span id="loading-test">Loading to Globe ... : </span>
+				<br>
+				<span id="tiles-test">Tiles to load: </span>
+			</div>
+			
+			<table>
+			
+			<tfoot>
+				
+				<tr id="add_layer_row">
+<!--
+					<td><input class="w3-check has_onclick_function" id="toggle_status" type="checkbox" checked = "false"/> <p> Show Loading Status </p> </td>
+-->
+					<td height="50"><button id="add_layer" class="add_layer_style" onclick="rsg_layers.add_layer()">Add Layer + </button></td>
+					
+					<td>
+						<button id="selected_layers" type="button" class="add_layer_style ui-button ui-corner-all ui-widget" data-toggle="dropdown">
+											 Additional Layers
+											 <span class="glyphicon glyphicon-cog"> </span> 
+											 <span class="caret"> </span>
+						 </button>
+	 						
+ 						<button id="overlay_layers" type="button" class="add_layer_style ui-button ui-corner-all ui-widget" data-toggle="dropdown">
+											Overlays
+											<span class="glyphicon glyphicon-cog"> </span> 
+											<span class="caret"> </span>
+						</button>
+					</td>
+				</tr>
+			</tfoot>
+			
+			</table>
+		</table>
+		
+		<div id="additional-layers-active-div">
+			<p id="additional-layers-active-label" class="small-blue-text">
+				Additional Layers Shown:
+			</p>
+			<p id="additional-layers-active-listnames" class="small-text">
+				Test
+			</p>
+		</div>
+		
+		<div id="overlay-layers-active-div">
+			<p id="overlay-layers-active-label" class="small-blue-text">
+				Overlay Layers Shown:
+			</p>
+			<p id="overlay-layers-active-listnames" class="small-text">
+				Test
+			</p>
+		</div>
+		
+	</div> <!-- toolbar -->
+	
+</div> <!-- flex div -->
+
+	<!--The div containing the settings menu. The text content of the spans is set by the javascript.-->
+	<div id="settings_menu">
+		<table width="100%">
+			<tbody>
+				<tr>
+					<td class="title_2">Layer Settings:</td>
+					<td align="right"><button class="layer_settings" onclick="rsg_ui.hide_settings()"><span class="ui-icon ui-icon-closethick"></span></button></td>
+				</tr>
+			</tbody>
+		</table>
+		<br />
+		<table>
+			<tbody>
+				<tr>
+					<td>Data: </td>
+					<td><span id="layer_data"></span></td>
+				</tr>
+				<tr>
+					<td>Source: </td>
+					<td><span id="layer_source"></span></td>
+				</tr>
+				<tr>
+					<td>Opacity: </td>
+					<td>
+						<div id="opacity_slider"></div>
+					</td>
+				</tr>
+				<tr>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- DIV containing the data selection menu that pops up. Populated by data selection script-->
+	<div id="data_select_menu">
+		<table width="100%">
+			<tbody>
+				<tr>
+					<td width="auto" class="title_2">Select Data:</td>
+					<td align="right"><button class="layer_settings" onclick="rsg_ui.hide_data_select()"><span class="ui-icon ui-icon-closethick"></span></button></td>
+				</tr>
+			</tbody>
+		</table>
+		<div id="accordion">
+		</div>
+	</div>
+
+	<!--Div containing the welcome menu. -->
+	<div id="welcome">
+		<p class="title_2">Welcome</p>
+		<p style="word-wrap:break-word; text-align:justify; font-size:100%;">Welcome to the RAL Remote Sensing Group's Data Visualisation Portal; 
+			a tool for viewing a range of our Group's near-real time Earth observation products on an interactive globe. See below for tips on how to get started. 
+		</p>
+		<br />
+		<table style="table-layout:fixed; border-spacing:20px 5px;">
+			<tbody>
+				<tr>
+					<td style="width:33%"><img id="layer_menu" style="display:block;" src="" height="170px"
+						 width="170px"></td>
+					<td style="width:66%;vertical-align:top">
+						<p style="text-align:justify; font-size:80%;">
+							<ul>
+							<li>Click 'Layer' to show/hide layer list</li>
+							<li>Click '+' to change a layer</li>
+							<li>Click 'Add Layer' to add a new layer (up to a max of 4); the top layer will be highlighted in blue</li>
+							<li>Select a product from the pop-up data selection menu and then click 'Add Data'</li>
+							<li>Click the gear icon to change layer settings</li>
+							<li>Change the date by using the arrow buttons or clicking on the date box to bring up a calendar</li>
+							<li>Click 'URL' to get shareable URL of current view</li>
+							</ul>
+						</p>
+					</td>
+					<!--<td style="width:33%"><img style="display:block;" src="Assets/Images/welcome_page/welcome_data.png" height="170px"
+						 width="170px"></td>
+					<td style="width:33%"><img style="display:block;" src="Assets/Images/welcome_page/welcome_map.png" height="170px"
+						 width="170px"></td>-->
+				</tr>
+<!--				<tr>
+					<td style="height:20px" class="title_3">Layers:</td>
+					<td style="height:20px" class="title_3">Data:</td>
+					<td style="height:20px" class="title_3">Map:</td>
+				</tr>
+
+				<tr style="height:auto">
+					<td style="vertical-align:top">
+						<p style="text-align:justify; font-size:80%;">
+							* Click '+' to change a layer
+							* Click 'Add Layer' to add a new layer
+							* Select a product from the pop-up data selection menu and then click 'Add Data'
+							* Click the gear icon to change layer settings
+							* Change the date by using the arrow keys or clicking on the date box to bring up a calendar
+						</p>
+					</td>
+					<td style="vertical-align:top">
+						<p style="text-align:justify; font-size:80%;">Drag and drop an image onto a layer in the toolbar to display it on
+							the globe. KMZ files can be dropped
+							directly onto the globe, and add ground stations with the 'add data source' menu</p>
+					</td>
+					<td style="vertical-align:top">
+						<p style="text-align:justify; font-size:80%;">Choose base layer imagery, change from a 3D to 2D projection,
+							search for a location, or bring up
+							the navigation help menu with the map settings.</p>
+					</td>
+				</tr>-->
+				<tr>
+					<td></td>
+					<td style="width:100%;text-align:center"><button class="get_started" onclick="get_started()">Get Started</button></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+
+
+	</div>
+	<!--rotation buttons in the top middle part of the screen-->
+	<div id="rotation">
+		<table>
+			<tbody>
+				<tr>
+					<td><button title="Rotate Globe Left" class="layer_settings" onclick="rotate_left()"><span class="ui-icon ui-icon-arrowthick-1-w"></span></button></td>
+					<td><button title="Stop Globe Rotation" class="layer_settings" onclick="stop_rotation()"><span class="ui-icon ui-icon-pause"></span></button></td>
+					<td><button title="Rotate Globe Right" class="layer_settings" onclick="rotate_right()"><span class="ui-icon ui-icon-arrowthick-1-e"></span></button></td>
+			</tbody>
+		</table>
+	</div>
+	
+	
+
+	<div id="colour_picker" class="off center cesium-credit-lightbox cesium-credit-lightbox-expanded">
+		<a class="cesium-credit-lightbox-close" onclick="rsg_ui.close(['colour_picker']);">
+			×
+		</a>
+		<div class="cesium-credit-lightbox-title">
+			Assign Custom Colours:
+		</div>
+		<div id="colour-list-container">
+			
+		</div>
+	</div>
+
+
+	<div id="footer_lightbox" class="off cesium-credit-lightbox-overlay"></div>
+	<div id="popup_box" class="acknowledgements_box off center cesium-credit-lightbox cesium-credit-lightbox-expanded">
+		<a class="cesium-credit-lightbox-close" onclick="rsg_ui.close(['popup_box', 'footer_lightbox']);">
+			×
+		</a>
+		
+		<div class="cesium-credit-lightbox-title">
+			This tool developed by RAL’s Remote-Sensing Group (RSG) to visualise satellite observations of atmospheric composition takes as inputs:
+		</div>
+		<ul>
+			<li>
+				<div style="display: inline;">
+					Data produced by RSG’s pilot near-real time (NRT) processing systems for Eumetsat’s MetOp and Meteosat Second Generation satellites
+				</div>
+			</li>
+			<li>
+				<div style="display: inline;">
+					Copernicus data (2020) on NO2 from Sentinel-5 Precursor gridded by RSG
+				</div>
+			</li>
+		</ul>
+		
+		<div class="cesium-credit-lightbox-title">
+			The tool is based on Cesium software and the base map visualised in images is NASA’s Visible Earth - August, Blue Marble Next Generation with Topography and Bathymetry, courtesy Reto Stöckli, NASA Earth Observatory.
+		</div>
+		
+		<div class="cesium-credit-lightbox-title">
+			The near-real time processing chains take as their inputs:
+		</div>
+		
+		<ul>
+			<li>
+				<div style="display: inline;">
+					Level-1B radiance data for GOME-2, IASI, MHS, AMSU-A and AVHRR/3 on MetOp and SEVIRI on MSG made available by Eumetsat through the Eumetcast system
+				</div>
+			</li>
+			<li>
+				<div style="display: inline;">
+					Met forecast data from ECMWF
+				</div>
+			</li>
+			<p>
+				<div style="display: inline;">
+					They run on the Jasmin compute infrastructure at RAL, managed by the Centre for Environmental Data Analysis with technical support by Scientific Computing Department
+				</div>
+			</p>
+		</ul>
+		<div class="cesium-credit-lightbox-title">
+			Development, implementation and technical support for the visualisation tool, pilot NRT processing chains and Eumetcast data reception have been funded through UKRI/NERC-NCEO,  UKRI/STFC & UKSA.
+		</div>
+		<div class="cesium-credit-lightbox-title padded">
+			<a href="http://www.cesiumjs.org" alt="CesiumJS"><img src="../Assets/Images/Logos/cesium_color_white.png" alt="Cesium" width=100></a>
+			<a href="http://www.ecmwf.int" alt="ECMWF"><img src="../Assets/Images/Logos/ECMWF_logo.production.png" alt="ECMWF" width=100></a>
+			<a href="http://www.eumetsat.int" alt="Eumetsat"><img src="../Assets/Images/Logos/eumetsat_logo_small.jpg" alt="Eumetsat" width=100></a>
+			<a href="http://www.esa.int" alt="ESA"><img src="../Assets/Images/Logos/esa-logo-small.png" alt="ESA" width=100></a>
+			<a href="http://www.copernicus.eu" alt="EU Copernicus"><img src="../Assets/Images/Logos/Copernicus-logo.gif" alt="Copernicus" width=100></a>
+			<a href="https://www.gov.uk/government/organisations/uk-space-agency" alt="UK Space Agency"><img src="../Assets/Images/Logos/UKSA_logo_RGB.jpg" alt="UK Space Agency" width=100></a>
+			<a href="http://www.jasmin.ac.uk" alt="JASMIN Compute Facility"><img src="../Assets/Images/Logos/Jasmin_logo_500px.png" alt="JASMIN Compute Facility" width=100></a>
+		</div>
+
+	</div>
+	
+	<!--Scripts loaded in here in this order due to dependancies. -->
+<!-- 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>  -->
+<!-- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  -->
+<!-- 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+<!-- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
+
+
+<!--
+	<script rel="preload" src="Assets/Build/Cesium/zip.js"></script>
+-->
+	<script src="https://cesium.com/downloads/cesiumjs/releases/1.65/Build/Cesium/Cesium.js"></script>
+<!--
+	version of Cesium - v1.65, local use: 
+-->
+<!--
+	<script rel="preload" src="Assets/Build/Cesium/Cesium.js"></script>
+-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.2/jszip.min.js"></script>
+<!-- 
+	jszip official website: https://stuk.github.io/jszip/
+	retrieved from: https://cdnjs.com/libraries/jszip (Content delivery network - gets .zip instead of .js from here)
+	version of jszip - v3.1.5 local use:
+	<script src="source/jszip.js"></script> 
+-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip-utils/0.1.0/jszip-utils.min.js"></script>
+<!-- 	
+	<script type="text/javascript" src="source/jszip-utils.js"></script> 
+-->
+	<!--[if IE]> 
+	<script type="text/javascript" src="dist/jszip-utils-ie.js"></script>
+	<![endif]-->
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+<!-- 	
+	require.js official website: https://requirejs.org/
+	retrieved from https://cdnjs.com/libraries/require.js/
+	version of jszip - v2.3.6 local use:
+	<script src="source/require.js"></script> 
+-->
+	<script src="source/rsg_helper_functions.js"></script>
+	<script src="source/rsg_timepicker.js"></script>
+	<script src="source/rsg_layer_functions.js"></script>
+	<script src="source/rsg_user_interface.js"></script>
+	<script src="source/rsg_animation.js"></script>
+	<script src="source/rsg_colour_picker.js"></script>
+	<script src="source/data_selection.js"></script>
+	<script src="source/visualisation.js"></script>
+	<!-- <script src="source/dragDrop.js"></script> -->
+<!-- Static data dropdown box eg. TCCON network stations-->
+<!--	<script src="source/static_data.js"></script> -->
+</body>
+
+</html>

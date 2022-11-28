@@ -1,0 +1,1003 @@
+/*CSS Stylesheet for the website. This controls the sizes, positions and colours of the divisions.*/
+
+/*The second url to the cesium build file. Update this if you change the build directory.*/
+@import url(../Assets/Build/Cesium/Widgets/widgets.css);
+
+html,
+body,
+#cesiumContainer {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#toolbar{
+    background: rgba(42, 42, 42, 0.8);
+    padding: 4px;
+    border-radius: 4px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-family: Arial, Arial, serif;
+    color: white;
+/*
+		width: fit-content;
+*/
+		width: intrinsic;           /* Safari/WebKit uses a non-standard name */
+		width: -moz-max-content;    /* Firefox/Gecko */
+		width: -webkit-max-content; /* Chrome */
+}
+
+#time-selection-ui{
+    background: rgba(42, 42, 42, 0.8);
+    padding: 4px;
+    border-radius: 4px;/*
+    top: 5px;
+    left: 5px;*/
+    font-family: Arial, Arial, serif;
+    color: white;
+/*
+		width: fit-content;
+*/
+		width: intrinsic;           /* Safari/WebKit uses a non-standard name */
+		width: -moz-max-content;    /* Firefox/Gecko */
+		width: -webkit-max-content; /* Chrome */
+		
+		margin-bottom: 10px; /* give some space for the toolbar (which is collision detected in rsg_ui) */
+}
+
+/* Location of the rotation buttons div*/
+#rotation {
+    position: absolute;
+    left: 50%;
+    top: 0px;
+    margin-left: -50px;
+}
+
+/* rotation button style */
+.rotate {
+    background-color: black;
+    border: 2px solid white;
+}
+
+/*settings menu loaction and style */
+#settings_menu {
+    background: rgba(42, 42, 42, 0.8);
+    padding: 4px;
+    border-radius: 4px;
+    position: absolute;
+    bottom: 50px;
+    left: 5px;
+    font-family: Arial, Arial, serif;
+    color: white;
+}
+
+#opacity_slider {
+    float: left;
+    clear: left;
+    width: 250px;
+    margin-right: 15px;
+}
+
+#toolbar input {
+    vertical-align: middle;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+#colourbar_max_label
+{
+	position: absolute;
+	top: 10px;
+}
+
+#colourbar_min_label
+{
+	position: absolute;
+	bottom: 10px;
+}
+
+/*positioning and style of colour bar div*/
+#colourbar {
+    background: rgba(42, 42, 42, 0.8);
+    padding: 4px;
+    border-radius: 4px;
+    font-family: Arial, Arial, serif;
+    width: 120px;
+    color: white;
+    position: absolute;
+    top: 300px;
+    right: 50px;
+}
+
+#tip-test{
+	background: rgba(42, 42, 42, 0.8);
+	color: white; 
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+	width: 200px;
+	height: 100px;
+}
+
+#events-dropdown{
+	background: rgba(42, 42, 42, 0.8);
+	color: white; 
+    position: absolute;
+    padding: 10px;
+    margin: 0px;
+    border: 0px;
+    top: 50px;
+    z-index: 9;
+    right: 150px;
+    width: 500px;
+    height: 400px;
+}
+
+#drop-window{
+	background: rgba(42, 42, 42, 0.8);
+	color: white; 
+    position: absolute;
+    padding: 10px;
+    margin: 0px;
+    border: 0px;
+    bottom: 300px;
+    right: 10px;
+    z-index: 9;
+    width: 500px;
+    height: 400px;
+}
+
+#share-buttons{
+	background: rgba(42, 42, 42, 0.8);
+	color: white; 
+    position: absolute;
+    padding: 10px;
+    margin: 0px;
+    border: 0px;
+    bottom: 100px;
+    right: 20px;
+    width: 70px;
+    height: 140px;
+}
+
+#shares-dropdown{
+	background: rgba(42, 42, 42, 0.8);
+	color: white; 
+    position: absolute;
+    padding: 10px;
+    margin: 0px;
+    border: 0px;
+    top: 50px;
+    right: 10px;
+    width: 50px;
+}
+
+#share-button-general{
+    background-color: transparent;
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    width: 30px;
+    height: 30px;
+}
+
+#twitter-button{
+    background-color: transparent;
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    bottom: 55px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+}
+
+
+#facebook-button{
+	background-color: transparent;
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    bottom: 10px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+}
+
+#colour-cell-box{
+    background: rgba(42, 42, 42, 0.8);
+    padding: 4px;
+    border-radius: 4px;
+    font-family: Arial, Arial, serif;
+    width: 550px;
+	max-width: 550px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+}
+
+#additional_layer_switches 
+{
+    background: rgba(42, 42, 42, 0.8);
+    padding: 4px;
+    border-radius: 4px;
+    font-family: Arial, Arial, serif;
+    width: 175px;
+    color: white;
+    top: 50px;
+    right: 10px;
+    
+}
+
+/*position of logos in bottom right */
+#logos {
+    position: absolute;
+    bottom: 30px;
+    right: 10px;
+}
+/* smaller logo option (just square icon) */
+#logos_small {
+    position: absolute;
+    bottom: 30px;
+    right: 10px;
+}
+
+/*the small logo for the mobile version */
+#ralsp_small {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+#time-selection-ui {
+    position: absolute;
+    top: 70px;
+    left: 5px;
+}
+
+/*data selection menu styling */
+#data_select_menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    font-family: Arial, Arial, serif;
+    color: white;
+    background: rgba(42, 42, 42, 0.8);
+    padding: 10px;
+    border-radius: 4px;
+    margin: -300px 0 0 -220px;
+    max-width: 100%;
+    max-height: 100%;
+    z-index: 5;
+    overflow: auto;  /*added for mobile phone accessibility, enables the scroll-bar */
+}
+
+/* needs tweaking but this is the style for the data selection div when in mobile view  */
+.data_select_small {
+    max-width: 100%;
+    margin: 0 0 0 0;
+}
+
+
+.add_layer_style {
+    font-family: Arial, Arial, serif;
+    font-size: 13px;
+
+}
+
+/*welcome menu */
+#welcome {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    width: 596px;
+    height: auto;
+    font-family: Arial, Arial, serif;
+    color: white;
+    background: rgba(42, 42, 42, 1);
+    padding: 12px;
+    border-radius: 8px;
+    margin: 100px 0 0 -306px;
+}
+
+
+/*The animated loading symbol is set up and controlled by these three definitions.*/
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*The text showing the sensor name in the overlays menu. Smaller text and italic.*/
+.source_txt {
+    font-size: 13px;
+    font-style: italic;
+}
+
+
+.txt_highlight {
+    color: skyblue;
+    font-weight: bold;
+}
+
+.txt_noData {
+    color: silver;
+}
+
+/*button style*/
+.layer_settings {
+    background-color: #313131;
+    border: 1px solid #6a9baf;
+}
+
+.get_started {
+    background-color: black;
+    padding: 1px;
+    border: 2px solid white;
+    font-family: Arial, Arial, serif;
+    color: white;
+    font-weight: bold;
+}
+
+
+/*layer data tag in toolbar?*/
+.l_data {
+    width: 195px;
+    font-size: 15px;
+}
+
+/*style change when item dragged over */
+.dragOver {
+    color: greenyellow;
+}
+
+/*text styling for headings */
+.title_2 {
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.title_3 {
+    font-size: 120%;
+    font-weight: bold;
+}
+
+table td {
+    word-wrap: break-word;
+}
+
+
+/*data sources drop down menu in top left */
+.data_sources {
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 325px;
+    width: auto;
+    height: auto;
+    font-family: Arial, Arial, serif;
+    color: white;
+    background: rgba(42, 42, 42, 0.8);
+    padding: 4px;
+    border-radius: 4px;
+}
+
+#accordion {
+    width: 450px;
+    max-width: 100%;
+    max-height: 800px;
+    font-size: 15px;
+}
+/*
+	Style Sheets for the layer selection:
+	* 2020-01-10 revision 7065 dosmi
+*/
+
+.additional_layer_input 
+{
+	color: white;
+	display: inline-block;
+	font-size: 15px;
+	font-family: Arial, Arial, serif;
+	padding-left: 5px;
+}
+
+.white_text{
+	color: white;
+}
+
+.text_small{
+	font-size: 13px;
+}
+
+.text_medium{
+	font-size: 18px;
+}
+
+.dropdown-toggle {
+	color: #7d7d7d;
+	background-color: white;
+	border-color: black;
+}
+
+.dropdown-menu {
+    position: absolute;
+    left: 0%;
+    top: 99%;
+/*
+    width: -webkit-fill-available;
+*/
+		width: 100%;
+    width: -moz-available;          /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    width: fill-available;
+    
+    max-height: 150px;
+    height: 0px;
+    /* width: auto; */
+    padding-right: 10%;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    background: rgba(42, 42, 42, 0.8);
+    color: white;
+    z-index: 2;
+/*
+    border: 1px solid #aaa;
+*/
+    overflow: auto;
+/*
+    visibility: hidden;
+*/
+    list-style-type: none;
+    padding-inline-start: 10px;
+    
+    transition: 0.5s;
+
+}
+
+.invisible{
+	visibility: hidden;
+}
+
+.dropdown-menu-active {
+/*
+    visibility: visible;
+*/
+		box-shadow: 0px 10px #6a9baf;
+    height: auto;
+}
+
+/*
+	END of Style Sheets for the layer selection:
+	* 2020-01-10 revision 7065 dosmi
+*/
+
+/*
+	Style Sheets for inactive buttons:
+	* 2020-01-10 revision 7071 dosmi
+*/
+
+.buttonDisabled{
+	background: #6d6d6d;
+	color: #c2c2c2;
+	pointer-events: none;
+}
+
+.notch{
+	box-shadow: 0px 10px #6a9baf;
+}
+
+#layer_data_shown{
+	position: absolute;
+	bottom: 30px;
+	left: 10px;
+	color: white;
+	text-shadow: 0px 1px 2px #000000, 1px 0px 2px #000000
+}
+
+.ral_button{
+	background-color: #313131;
+	border: 1px solid #6a9baf;
+	color: #7bb9d2;
+}
+
+#toggle_colourbar{
+		display: none;
+	}
+
+#toggle_time_ui{
+		display: none;
+	}
+	
+#align-center{
+	top: 50%;
+	right: 50%;
+}
+	
+
+#time_slider{
+	width: 162px;
+	background: #87b9cd;
+}
+/* change colour of the time slider head */
+.ui-slider .ui-slider-handle{
+	background: #7bb9d2 !important;
+}
+
+.testimog{
+/*
+	object-fit: cover;
+*/
+	max-width:100%;
+/*
+	object-fit: cover;
+	height: 600px;
+	width: 120px;
+	object-position: center center;
+*/
+}
+
+#colour-list-container{
+	display: flex; /* using the flexible layout container */
+	flex-wrap: wrap; /* when items exceed the width, move them to new line */
+	padding:5px; /* this */
+}
+
+.flex-break {
+  flex-basis: 100%;
+  height: 0;
+}
+@media screen and (max-width: 991px){
+	.flex-break {
+	  flex-basis: 0%;
+	  height: 0;
+	}
+}
+
+#colour-list-container > div{
+		margin:5px;  /* and that, will result in a 10px gap */
+	}
+}
+
+.colour-cell{
+	width: 20px;
+	height: 20px;
+}
+
+.blank-space{
+	width: 20px;
+	height: 20px;
+}
+
+
+.boxed{
+	border: 1px solid green ;
+}
+
+.cesium-credit-lightbox.cesium-credit-lightbox-expanded{
+	width: 550px;
+	max-width: 550px;
+}
+
+.acknowledgements_box{
+	height: 650px;
+	overflow: auto;
+}
+
+
+/* mobile view styles */ 
+@media only screen and (max-width: 750px) {
+  #layer_data_shown {
+    font-size: 10px;
+  }
+  #settings_menu{
+	  bottom: 100px;
+  }
+  #colourbar_image{
+	  max-width: 100%;
+  }
+  #colourbar{
+	  top: 30%;
+    right: 0px;
+    width: 65px;
+    height: 400px;
+    transition: 0.5s;
+	}
+	#time-selection-ui{
+    transition: 0.5s;
+	}
+	
+	#toggle_colourbar{
+		display: block;
+    position: absolute;
+    top: 0%;
+    left: -20px;
+    background: rgba(42, 42, 42, 0.8);
+    padding: 2px;
+    height: 50px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+	}
+	#toggle_time_ui{
+		display: block;
+    position: absolute;
+    top: 0%;
+    right: -20px;
+    background: rgba(42, 42, 42, 0.8);
+    padding: 2px;
+    height: 50px;
+    width: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+	}
+	
+	.acknowledgements_box{
+		height: inherit;
+	}
+	
+	.ui-icon-triangle-1-w{
+		transition: 0.5s;
+	}
+	.ui-icon-triangle-1-e{
+		transition: 0.5s;
+	}
+	.toggle_off{
+		transform: "initial";
+	}
+	.toggle_on{
+		transform: rotate(180deg);
+	}
+	
+	.colourbar_on{
+		right: 0px !important;
+	}
+	.colourbar_off{
+		right: -65px !important;
+	}
+	.ui-icon-triangle-1-w{
+		top: 14px;
+	}
+	
+	.not-in-mobile-view{
+		display: none;
+	}
+	
+	.cesium-toolbar-button{
+		width: 20px;
+		height: 20px;
+	}
+	
+	.cesium-sceneModePicker-wrapper .cesium-sceneModePicker-button2D, .cesium-sceneModePicker-wrapper .cesium-sceneModePicker-button3D, .cesium-sceneModePicker-wrapper .cesium-sceneModePicker-buttonColumbusView{
+		margin: -8px 0 0px 0;
+	}
+	
+}
+
+@keyframes glowing {
+	0% {
+	  background-color: #000000;
+	  box-shadow: 0 0 5px #000000;
+	}
+	50% {
+	  background-color: #ffffff;
+	  box-shadow: 0 0 50px #ffffff;
+	}
+	100% {
+	  background-color: #000000;
+	  box-shadow: 0 0 5px #000000;
+	}
+}
+
+
+/* overwrite the ui-icon styles (font color and size) */
+.custom-toolbar-icon{
+	font-size: 22px !important;
+	color: white !important;
+}
+
+.squished-rectangle{
+	width: 30px !important;
+	height: 25px !important;
+}
+
+.add-top-ui-icon{
+	z-index: 11;
+}
+
+/* add the mobile view later, to overwrite the previous font-size */
+@media only screen and (max-width: 750px) {
+	/* overwrite the ui-icon styles (font color and size) */
+	.custom-toolbar-icon{
+		font-size: 14px !important;
+		color: white !important;
+		margin-bottom: 8px !important;
+	}
+}
+
+/* overwrite the ui-widget font size, which is too big */
+.ui-widget{
+	font-size: 13px !important;
+	}
+	
+#datepicker-13{
+	width: 91px; /* size to remain constant as long as the font size is 13px to fit the date in the input field*/
+/* 	border: 1px solid #6a9baf; */
+}
+#timepicker{
+	width: 50px; /* size to remain constant as long as the font size is 13px to fit the date in the input field*/ 
+ 	
+}
+
+#timepicker_control{
+	display: none;
+}
+
+
+.off{
+	display: none;
+}
+
+.on{
+	display: block;	
+}
+
+.ui_off{
+	display: none;
+}
+
+.ui_on{
+	display: block;	
+}
+
+/*
+#animation_menu{
+	float: left;
+}
+
+#time_control_ui{
+	float: left;
+}
+*/
+
+.padded{
+	padding: 15px;
+}
+
+.ui_panel{
+	background: rgba(42, 42, 42, 0.8);
+	padding: 4px;
+	border-radius: 4px;
+	font-family: Arial, Arial, serif;
+	color: white;
+}
+
+.animation_datepicker{
+	width: 91px; /* size to remain constant as long as the font size is 13px to fit the date in the input field*/
+}
+
+#animation_ui{
+	box-shadow: 10px 10px 4px rgba(0, 0, 0, .5);
+	position: relative;
+	z-index: 5;
+}
+
+.center{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+/*
+	width: fit-content; // caused errors on Firefox ...
+*/
+	
+	width: intrinsic;           /* Safari/WebKit uses a non-standard name */
+	width: -moz-max-content;    /* Firefox/Gecko */
+	width: -webkit-max-content; /* Chrome */
+	
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+#popup_box{
+	z-index: 15;
+}
+
+.topright{
+	position: absolute;
+	top: 50px;
+	right: 10px;
+}
+
+.white-text{
+	color: white;
+}
+
+.legend{ /* overwrite the original legend style for the accordion fieldset titles */
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.add-data-btn{
+	float: right;
+}
+
+.reversed{ /* make the slider go from min-max to max-min */
+	direction: rtl
+}
+
+.ui-box{
+	background: rgba(42, 42, 42, 0.8);
+	padding: 4px;
+	border-radius: 4px;
+	font-family: Arial, Arial, serif;
+}
+
+.cesium-toolbar-button{
+	z-index: 10;
+}
+
+.unit_text{
+	text-align: center;
+}
+
+.font10px {
+	font-size : 10px;
+}
+
+.red{
+	color : red;
+}
+
+.inline{
+	width : 50%;
+}
+
+.outline{
+	border: 1px solid white;
+}
+
+/* make all icons the same colour: */
+.ui-icon{
+	color: #7bb9d2;
+}
+
+.cesium-navigation-help-visible{
+	display: none;
+}
+
+.cesium-navigation-help{
+	display: none;
+}
+
+.bottom-margin{
+	margin-bottom: 10px;
+}
+
+/* updating styles for the new jQuery icons: */
+html .ui-accordion .ui-accordion-header .ui-accordion-header-icon{
+	display: inline-block !important;
+	left: unset !important;
+	margin-top: unset !important;
+	position: relative !important;
+}
+
+.ui-checkboxradio-label .ui-icon-background{
+	box-shadow: inset 0px 0px 4px #7bb9d2 !important;
+}
+
+.show-in-screenshot{
+	opacity: 0.0;
+}
+
+.rotate-90 {
+
+/*
+writing-mode: vertical-rl;
+text-orientation: upright;
+*/
+
+/*
+  writing-mode: tb-rl;
+*/
+	text-align: center;
+	font-size: 12px;
+	
+	width: 250px;
+	display: block;
+	height: 250px;
+	
+	margin-block-start: 0px;
+	margin-block-end: 0px;
+  
+/*
+	 transform: rotate(-90deg);
+*/
+
+  /* Legacy vendor prefixes that you probably don't need... */
+
+  /* Safari */
+  -webkit-transform: rotate(-90deg);
+
+  /* Firefox */
+  -moz-transform: rotate(-90deg);
+
+  /* IE */
+  -ms-transform: rotate(-90deg);
+
+  /* Opera */
+  -o-transform: rotate(-90deg);
+
+  /* Internet Explorer */
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+.transparent-button{
+	background: transparent;
+	border-color: transparent;
+}
+
+.small-blue-text {
+	color: #7bb9d2;
+	font-size: x-small;
+}
+
+.small-text{
+	font-size: x-small;
+}
+
+.blue-ui-text {
+	color: #7bb9d2;
+	font-size: x-small;
+}
+
+.disabledTag {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+/*
+	set default font:
+*/
+* {
+    font-family: "Segoe UI",Arial,sans-serif;
+  }

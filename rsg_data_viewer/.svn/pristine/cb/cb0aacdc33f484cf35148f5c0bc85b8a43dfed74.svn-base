@@ -1,0 +1,9 @@
+Name	URL
+%czml%TCCON Ground Stations	Assets/Data/static_data_sources/tccon_ground_stations.czml
+%czml%TCCON Ground Stations (named)	Assets/Data/static_data_sources/tccon_ground_stations_named.czml
+%zip%Coastlines&Borders	../Assets/Data/additional_layers.zip
+%zip%Country	../Assets/Data/country.zip
+%json%Volcanos	Assets/Data/static_data_sources/volcanos.json
+%json%Volcanos2	../Assets/Data/volcanos.zip
+%kmz%Wind	Assets/Data/static_data_sources/%yyyy%-%mm%-%dd%/wind.kmz
+%kmz%Aeronet	Assets/Data/static_data_sources/aeronet.kmz
