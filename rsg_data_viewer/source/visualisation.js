@@ -26,6 +26,9 @@
 // --------------------- GLOBAL VARIABLE SETUP ---------------------- //
 // website state structure to be able to get ... 
 // ... current information of the website in all functions
+//const PROXY_URL = 'https://gws-access.jasmin.ac.uk/public/rsg_share/webpages/';
+const PROXY_URL = 'http://localhost:8010/proxy/public/rsg_share/webpages';
+
 var website_state = {
 	// --------- LOADING DATA STATE  --------- //
 	layer0_loaded_from_url : false,
@@ -314,7 +317,9 @@ $(document).ready(function ()
 	// initialise (default values) for layer index mappings from the project tables:
 	initialise_layer_project_table_index_mappings(nr_of_layers=4)
 	
-	//~ setup_layers_from_url();
+	if (window.location.href.split('?').length == 2){
+		setup_layers_from_url();
+	}
 	//load the datepicker-ui widget:
 	rsg_ui_widgets.add_datepicker();
 	
@@ -328,7 +333,7 @@ $(document).ready(function ()
 	// (TAGS: get config table, get_config_table getConfigTable)
 		$.ajax({
 		type: "GET",
-		url: "../rsg_data_viewer_config/config_table.txt",
+		url: PROXY_URL + "rsg_data_viewer_config/config_table.txt",
 		dataType: "text",
 		success: function (data)
 		{
@@ -347,19 +352,19 @@ $(document).ready(function ()
 	});
 	
 	//~ add_bottom_logo(href="https://www.esa.int/Applications/Observing_the_Earth/Copernicus", 
-	                //~ src="../Assets/Images/Logos/Copernicus-logo-30T.png", height=50, alt="Copernicus",
+	                //~ src="https://gws-access.jasmin.ac.uk/public/rsg_share/webpages/Assets/Images/Logos/Copernicus-logo-30T.png", height=50, alt="Copernicus",
 	                //~ hspace=14, small_scr="copr")
 	                //~ 
 	//~ add_bottom_logo(href="https://www.ecmwf.int/", 
-	                //~ src="../Assets/Images/Logos/ECMWF_logo.production.png", height=15, alt="ECMWF",
+	                //~ src="https://gws-access.jasmin.ac.uk/public/rsg_share/webpages/Assets/Images/Logos/ECMWF_logo.production.png", height=15, alt="ECMWF",
 	                //~ hspace=14, small_scr="copr")
 	
 	setupDate(); // set up the date to default to (today's date)
 	setupPage();
 	setup_listeners();
 	
-	init_events_array();
-	ready_events();
+	//init_events_array();
+	//ready_events();
 	// set up the overlays and the additional layers:
 	rsg_ui_widgets.set_up_extra_layers();
 	
@@ -565,7 +570,7 @@ custombasemap.addImageryProvider(new Cesium.UrlTemplateImageryProvider({
 
     //~ url : Cesium.buildModuleUrl('http://gws-access.jasmin.ac.uk/public/rsgnceo/web_dev_dd/Assets/Images/Basemaps/BlueMarble') + '/{z}/{x}/{reverseY}.png',
     // NOTE: BlueMarble linked here is relative to where Cesium sourcecode is:
-    url : Cesium.buildModuleUrl('../../../../../web_internal/Assets/Images/Basemaps/BlueMarble' + '/{z}/{x}/{reverseY}.png'),
+    url : Cesium.buildModuleUrl(PROXY_URL + 'Assets/Images/Basemaps/BlueMarble' + '/{z}/{x}/{reverseY}.png'),
     // using the WebMercatorTilingScheme:
     /* A tiling scheme for geometry referenced to a WebMercatorProjection, EPSG:3857. 
      * This is the tiling scheme used by Google Maps, Microsoft Bing Maps, and most of ESRI ArcGIS Online. */
@@ -877,7 +882,7 @@ var layers = viewer.scene.imageryLayers
 	for (i = 0; i < 4; i++)
 	{
 		window["layer"+i] = layers.addImageryProvider(new Cesium.SingleTileImageryProvider({
-			url: '../Assets/Data/empty.png',
+			url: PROXY_URL + 'Assets/Data/empty.png',
 			rectangle: Cesium.Rectangle.fromDegrees(-180, -90, 180, 90),
 			alpha: 1,
 			minificationFilter: Cesium.TextureMagnificationFilter.NEAREST,
@@ -897,7 +902,7 @@ var layer3 = window['layer3'];
 // for each layer we specify nearest neighbour interpolation to get sharp pixel edges 
 /*
 var layer0 = layers.addImageryProvider(new Cesium.SingleTileImageryProvider({
-	url: '../Assets/Data/empty.png',
+	url: 'https://gws-access.jasmin.ac.uk/public/rsg_share/webpages/Assets/Data/empty.png',
 	rectangle: Cesium.Rectangle.fromDegrees(-180, -90, 180, 90),
 	alpha: 1,
 	minificationFilter: Cesium.TextureMagnificationFilter.NEAREST,
@@ -908,7 +913,7 @@ var layer0 = layers.addImageryProvider(new Cesium.SingleTileImageryProvider({
 
 
 var layer1 = layers.addImageryProvider(new Cesium.SingleTileImageryProvider({
-	url: '../Assets/Data/empty.png',
+	url: 'https://gws-access.jasmin.ac.uk/public/rsg_share/webpages/Assets/Data/empty.png',
 	rectangle: Cesium.Rectangle.fromDegrees(-180, -90, 180, 90),
 	minificationFilter: Cesium.TextureMagnificationFilter.NEAREST,
 	magnificationFilter: Cesium.TextureMagnificationFilter.NEAREST,
@@ -917,7 +922,7 @@ var layer1 = layers.addImageryProvider(new Cesium.SingleTileImageryProvider({
 }));
 
 var layer2 = layers.addImageryProvider(new Cesium.SingleTileImageryProvider({
-	url: '../Assets/Data/empty.png',
+	url: 'https://gws-access.jasmin.ac.uk/public/rsg_share/webpages/Assets/Data/empty.png',
 	rectangle: Cesium.Rectangle.fromDegrees(-180, -90, 180, 90),
 	minificationFilter: Cesium.TextureMagnificationFilter.NEAREST,
 	magnificationFilter: Cesium.TextureMagnificationFilter.NEAREST,
@@ -926,7 +931,7 @@ var layer2 = layers.addImageryProvider(new Cesium.SingleTileImageryProvider({
 }));
 
 var layer3 = layers.addImageryProvider(new Cesium.SingleTileImageryProvider({
-	url: '../Assets/Data/empty.png',
+	url: 'https://gws-access.jasmin.ac.uk/public/rsg_share/webpages/Assets/Data/empty.png',
 	rectangle: Cesium.Rectangle.fromDegrees(-180, -90, 180, 90),
 	minificationFilter: Cesium.TextureMagnificationFilter.NEAREST,
 	magnificationFilter: Cesium.TextureMagnificationFilter.NEAREST,
@@ -1031,7 +1036,12 @@ function setupPage() {
 	//~ rsg_ui.hide_colourbar();
 	
 	// get the boundary values for the time_slider (start, end)
-	time_slider_dates = helper.get_timeslider_dates(helper.formatDate(website_state.url_date));
+	var url_date = website_state.url_date;
+	if (url_date){
+		time_slider_dates = helper.get_timeslider_dates(helper.formatDate(website_state.url_date));
+	} else {
+		time_slider_dates = helper.get_timeslider_dates('2000/02/01')
+	}
 	// pass the start, end values to time_slider creating function:
 	rsg_ui_widgets.add_time_slider(time_slider_dates[0], time_slider_dates[1]);
 	
@@ -1071,18 +1081,18 @@ function setupPage() {
 	// Alter cesium footer with new logos - small logo for cesium missing
 	alter_default_cesium_logo();
 	add_bottom_logo(href="http://www.nceo.ac.uk/", 
-	                src="../Assets/Images/Logos/nceo_logo.png", height=50, alt="NCEO",
-	                hspace=14, small_scr="../Assets/Images/Logos/nceo_logo_small.png")
+	                src = PROXY_URL + "Assets/Images/Logos/nceo_logo.png", height=50, alt="NCEO",
+	                hspace=14, small_scr= PROXY_URL + "Assets/Images/Logos/nceo_logo_small.png")
 	add_bottom_logo(href="http://www.stfc.ac.uk/", 
-	                src="../Assets/Images/Logos/UKRI_STF_Council-Logo_Horiz-RGB_white.png", height=50, alt="UKRI-STFC",
-	                hspace=14, small_scr="../Assets/Images/Logos/UKRI_STF_Council-Logo_Square-RGB_W.png")
+	                src=PROXY_URL+"Assets/Images/Logos/UKRI_STF_Council-Logo_Horiz-RGB_white.png", height=50, alt="UKRI-STFC",
+	                hspace=14, small_scr=PROXY_URL+"Assets/Images/Logos/UKRI_STF_Council-Logo_Square-RGB_W.png")
 	add_credit_data_attribution();
 	add_credit_link_to_footer("Policy & Cookies", "https://stfc.ukri.org/about-us/privacy-statement/");
 	add_credit_link_to_footer("Terms of use", "https://stfc.ukri.org/about-us/terms-of-website-use-disclaimer/");
 	add_credit_popup_to_footer("Acknowledgements",rsg_ui.open,['popup_box', 'footer_lightbox']);
 //	redirect_toolbar("cesium-navigation-help-button", "http://gws-access.jasmin.ac.uk/public/rsg_share/webpages/landing/faqs.html");
-	redirect_toolbar("cesium-navigation-help-button", "http://gws-access.jasmin.ac.uk/public/rsg_share/","FAQs"); // changed url 04/08/2021
-    redirect_toolbar("cesium-home-button", "http://gws-access.jasmin.ac.uk/public/rsg_share/landing/"); // changed url 04/08/2021
+	redirect_toolbar("cesium-navigation-help-button", PROXY_URL + "../","FAQs"); // changed url 04/08/2021
+    redirect_toolbar("cesium-home-button", PROXY_URL + "../landing/"); // changed url 04/08/2021
 // Once alias/redirect setup, the above line should be updated to:
 //	redirect_toolbar("cesium-navigation-help-button", "http://rsg.rl.ac.uk/landing/");
 
@@ -1161,7 +1171,7 @@ function add_zip_additional_datasource_layer(zipfile_name)
 	// (The size reduction can reach 70%, now client has to load less data) 
 	var myZip = new JSZip(); // create a new object for every zip file to remove old files
 
-	//~ JSZipUtils.getBinaryContent('../Assets/Data/'+zipfile_name, function(err, data) 
+	//~ JSZipUtils.getBinaryContent('https://gws-access.jasmin.ac.uk/public/rsg_share/webpages/Assets/Data/'+zipfile_name, function(err, data) 
 	JSZipUtils.getBinaryContent(zipfile_name, function(err, data) 
 	{
 		if(err){
@@ -1260,7 +1270,7 @@ function add_zip_additional_datasource_layer(zipfile_name)
 					if ( website_state.selected_additional_layers.indexOf(helper.Capitalise_Each_Word(formatted_filename)) != -1 )
 					{ // if processing the 'on by default' extra layer, we show it (load it)
 						outline_layer.load(layerJsonObject, 
-						//~ outline_layer.load('../Assets/Data/coastlines', 
+						//~ outline_layer.load('https://gws-access.jasmin.ac.uk/public/rsg_share/webpages/Assets/Data/coastlines', 
 						{
 							stroke: Cesium.Color.SILVER,
 							// display only the borders (Alpha(0) -> transparent), ...
@@ -2740,7 +2750,7 @@ function request_bottom_logo(link, style)
 	                hspace=logo_hspace, small_scr=logo_small_src)
 } 
 
-// <a href="http://www.stfc.ac.uk/"><img src="../Assets/Images/Logos/UKRI_STF_Council-Logo_Horiz-RGB_white.png" alt="UKRI-STFC" height="50px"></a>
+// <a href="http://www.stfc.ac.uk/"><img src="https://gws-access.jasmin.ac.uk/public/rsg_share/webpages/Assets/Images/Logos/UKRI_STF_Council-Logo_Horiz-RGB_white.png" alt="UKRI-STFC" height="50px"></a>
 function add_bottom_logo(href, src, height, alt, hspace, small_scr){
 	// define defaults (function add_bottom_logo(href, src, height, alt, hspace=0, small_scr="") is not compatable on InternetExplorer)
 	if(hspace === undefined) {hspace = 0;}

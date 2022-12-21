@@ -920,9 +920,28 @@ function generate_png_url(variable_index, project_index, proj_table, layer_id, a
 
 //add layers based on url query
 function setup_layers_from_url(url) {
-	//get date
-	var url_date = getParameterByName("cal", url)
-	//if no date defined, default to today
+	
+	// ---- Extract Parameters from URL Link ----
+	// If parameters are available, set the viewer correctly
+
+	// Ideal URL structure:
+	// rsg_data_viewer/?cal=2022C01C01 &
+	//                  proj = 0 C 1 & - different projects
+	//                  vars = 14 C 2 & - different vars
+	//                  rloc = lat C lon C A C B
+	//                  lch = 1C1C
+
+	var url_date      = getParameterByName("cal", url);
+	var url_projects  = getParameterByName("proj", url);
+	var url_vars      = getParameterByName("vars", url);
+	var url_layers_on = getParameterByName("lch", url);
+	var url_rloc      = getParameterByName("rloc",url);
+
+	// Additional settings - overlays
+	var url_overlays = getParameterByName("ol",url);
+	var url_dir_spin = getParameterByName("ds",url);
+
+	// Date handling - specific or today
 	if (url_date != null) 
 	{
 		// convert url date string to actual date object:
@@ -937,74 +956,87 @@ function setup_layers_from_url(url) {
 			$("#datepicker-13").val(date_obj);
 		})
 	}
-	
 	else {website_state.url_date = new Date();} // by default, new Date returns today
 	
-	//set region focus [west,south,east,north] from url corner coordinates:
-	set_region_view_from_url(url);
-
-	//get project indices:
- 	var url_projects = getParameterByName("proj", url)
-	//get the variables:
-	var url_vars = getParameterByName("vars", url)
-	// extract information which layers to turn off or on:
-	var url_layers_on = getParameterByName("lch", url)
-
-	//error handling
-	if (url_projects == null) 
-	{ // if url is empty ...
-		// ... setup the default image (0, 2, 0 = IASI Methane xCH4 7 Day)
-		/* 'default_line_of_row_zero' is global and defined in 'visualisation.js'
-		 * ... it is 0 by default, but if config_table.txt contains the following:
-		 * ^default_ prod_line^=<number>, then default_line_of_row_zero is assigned that <number>
-		 */
-		// url_turnedON flag set to 1 means layer should be visible (ticked)
-		add_url_data_to_layer(0, default_line_of_row_zero, 0, url_turnedON = 1)
-		return null
-	} 
-	else if ((url_projects.split("C")).length > 4) 
-	{
-		//~ rsg_ui_widgets.add_datepicker();
-		//~ d = website_state.url_date
-		//~ $("#datepicker-13").val(helper.formatDate(d));
-		//setup the default image (0, 2, 0 = IASI Methane xCH4 7 Day) METOP-B
-		/* 'default_line_of_row_zero' is global and defined in 'visualisation.js'
-		 * ... it is 0 by default, but if config_table.txt contains the following:
-		 * ^default_ prod_line^=<number>, then default_line_of_row_zero is assigned that <number>
-		 */
-		add_url_data_to_layer(0, default_line_of_row_zero, 0, url_turnedON = 1)
-		return null
+	// Region handling
+	if (url_rloc != null) {
+		set_region_view_from_url(url_rloc);
 	}
-	else 
-	{ 
-		//~ rsg_ui_widgets.add_datepicker();
-		//~ d = website_state.url_date
-		//~ $("#datepicker-13").val(helper.formatDate(d));
-		// if given full defined URL:
-		// project and variable indices split by a C
-		url_projects = url_projects.split("C")
-		url_vars = url_vars.split("C")
-		try{
-			url_layers_on = url_layers_on.split("C")
-		}
-		catch(e){
-			url_layers_on = [1,1,1,1]
-		}
-		
-		//error handling if an erroneus URL was given
-		if (url_projects.length != url_vars.length) {
-			return null
-		}
 
-		//load the tables to layers starting from the top layer 0:
-		for (var s = 0; s < url_projects.length; s++) 
-		{ //get the parameters
-			var pi = parseInt(url_projects[s]) // project index
-			var vi = parseInt(url_vars[s]) // variable index
-			var is_layer_on = parseInt(url_layers_on[s])
-			add_url_data_to_layer(pi, vi, s, url_turnedON = is_layer_on)
-			rsg_layers.make_topmost_checked_on_layer_active();
+	// Project/Vars/Layers Handling
+	if (url_projects != null){
+
+		if ((url_projects.split("C")).length > 4)
+		{ // if url is empty ...
+			// ... setup the default image (0, 2, 0 = IASI Methane xCH4 7 Day)
+			/* 'default_line_of_row_zero' is global and defined in 'visualisation.js'
+			* ... it is 0 by default, but if config_table.txt contains the following:
+			* ^default_ prod_line^=<number>, then default_line_of_row_zero is assigned that <number>
+			*/
+			// url_turnedON flag set to 1 means layer should be visible (ticked)
+			add_url_data_to_layer(0, default_line_of_row_zero, 0, url_turnedON = 1);
+		} 
+		else 
+		{ 
+			//~ rsg_ui_widgets.add_datepicker();
+			//~ d = website_state.url_date
+			//~ $("#datepicker-13").val(helper.formatDate(d));
+			// if given full defined URL:
+			// project and variable indices split by a C
+			url_projects = url_projects.split("C")
+			url_vars = url_vars.split("C")
+			try{
+				url_layers_on = url_layers_on.split("C")
+			}
+			catch(e){
+				url_layers_on = [1,1,1,1]
+			}
+			
+			//error handling if an erroneus URL was given
+			if (url_projects.length != url_vars.length) {
+				return null
+			}
+
+			//load the tables to layers starting from the top layer 0:
+			for (var s = 0; s < url_projects.length; s++) 
+			{ //get the parameters
+				var pi = parseInt(url_projects[s]) // project index
+				var vi = parseInt(url_vars[s]) // variable index
+				var is_layer_on = parseInt(url_layers_on[s])
+				add_url_data_to_layer(pi, vi, s, url_turnedON = is_layer_on)
+				rsg_layers.make_topmost_checked_on_layer_active();
+			}
 		}
+	}
+
+	// Overlay Handling
+	if (url_overlays != null){
+		set_overlay_layers_from_url(url_overlays);
+	}
+
+	// Spinning Globe
+	if (url_dir_spin != null){
+		if (url_dir_spin == 'r'){
+			rotate_right()
+		} else if (url_dir_spin == 'l'){
+			rotate_left()
+		}
+	}
+}
+
+function set_overlay_layers_from_url(url_overlays){
+	var val;
+	var overlays = [
+		"Coastlines",
+		"Reference Labels",
+		"Reference Features",
+	];
+
+	for (ol of url_overlays.split("C")){
+		val = overlays[parseInt(ol)];
+		selected_layer_options.push( val );
+		setTimeout( function() { $inp.prop( 'checked', true ) }, 0);
+		show_overlay_layer_by_name(val);
 	}
 }
 
